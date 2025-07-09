@@ -1,4 +1,5 @@
 package calculator;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -8,8 +9,7 @@ public class App {
         Calculator calculator = new Calculator();
         String ch = ""; // 초기화
 
-        int [] arr = new int [10];
-        int count = 0;
+        ArrayList<Integer> arr = new ArrayList<>();
 
         do { // 무조건 1번은 실행 되도록 do while 문 사용
             // 양의 정수 0포함 2개 전달 받기, 음의 정수, 실수 등 입력하지 않도록 print에 추가 설명
@@ -40,16 +40,18 @@ public class App {
                 System.out.println("올바르지 않은 연산 기호가 들어 왔습니다. (+, -, *, /)");
                 continue;
             }
+            arr.add(result);
+            System.out.print("저장된 결과 출력: "+ arr + "\n");
 
-            if (count == arr.length) { // 배열이 가득 차면,
-                for (int i = 0; i < arr.length-1; i++) arr[i] = arr[i+1]; // 결과 값을 한 칸씩 앞으로 이동(가장 오래된 값 제거)
-                arr[count-1]  = result; // 새로운 결과 값을 마지막 index에 저장
+            System.out.println("결과: " + result);
+
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+
+            String rem = sc.next();
+            if (rem.equals("remove")) {
+                arr.remove(0); // 가장 오래된 결과 삭제
+                System.out.print("저장된 결과 출력: "+ arr + "\n");// 삭제가 잘 되었는지 확인하기 위해 출력
             }
-            else arr[count++] = result; // 배열이 가득 차지 않았다면, result를 count 위치에 저장한 뒤, count 1 증가
-
-            System.out.print("저장된 결과 출력: ");
-            for (int i=0; i<count; i++) System.out.print(arr[i] + " ");
-            System.out.println("\n결과: " + result);
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             ch = sc.next();
