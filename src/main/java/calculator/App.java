@@ -8,6 +8,9 @@ public class App {
         Calculator calculator = new Calculator();
         String ch = ""; // 초기화
 
+        int [] arr = new int [10];
+        int count = 0;
+
         do { // 무조건 1번은 실행되도록 do while 문 사용
             // 양의 정수 0포함 2개 전달 받기, 음의 정수, 실수 등 입력하지 않도록 print에 추가 설명
             System.out.print("첫 번째 숫자(0 이상의 정수)를 입력하세요:  ");
@@ -37,7 +40,16 @@ public class App {
                 System.out.println("올바르지 않은 연산 기호가 들어 왔습니다. (+, -, *, /)");
                 continue;
             }
-            System.out.println("결과: " + result);
+            // 연산 결과가 10개를 초과하는 경우는 6번에서 자세히 구현
+            // 따라서 5번에서는 10개를 초과하면 단순히 마지막 값을 덮어쓰는 방식으로 처리
+            if (count == arr.length) count -= 1;
+
+            // result를 count 위치에 저장한 뒤, count 1 증가
+            arr[count++] = result;
+
+            System.out.print("저장된 결과 출력: ");
+            for (int i=0; i<count; i++) System.out.print(arr[i] + " ");
+            System.out.println("\n결과: " + result);
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             ch = sc.next();
