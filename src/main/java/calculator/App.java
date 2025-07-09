@@ -41,16 +41,20 @@ public class App {
                 continue;
             }
             arr.add(result);
-            System.out.print("저장된 결과 출력: "+ arr + "\n");
-
             System.out.println("결과: " + result);
 
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
-
             String rem = sc.next();
-            if (rem.equals("remove")) {
-                arr.remove(0); // 가장 오래된 결과 삭제
-                System.out.print("저장된 결과 출력: "+ arr + "\n");// 삭제가 잘 되었는지 확인하기 위해 출력
+            if (rem.equals("remove")) arr.remove(0); // 가장 오래된 결과 삭제
+
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            String inq = sc.next();
+            if (inq.equals("inquiry")) {
+                System.out.print("저장된 연산결과 조회:  ");
+                for (Integer num : arr) {
+                    System.out.print(num + " ");
+                }
+                System.out.println();
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
