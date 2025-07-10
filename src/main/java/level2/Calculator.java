@@ -32,9 +32,9 @@ public class Calculator {
 //        System.out.println();
 //    }
 
-//    public void removeArr() {
-//        this.arr.remove(0);
-//    }
+    public void removeResult() {
+        this.arr.remove(0); // 외부에서 접근하는 게 아닌, 내부에서 접근
+    }
 
     // getter
     public ArrayList<Integer> getArr() {
