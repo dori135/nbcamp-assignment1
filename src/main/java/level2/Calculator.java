@@ -26,7 +26,7 @@ public class Calculator {
 
     public void inquiry() {
         System.out.print("저장된 연산결과 조회:  ");
-        for (Integer num : arr) {
+        for (Integer num : this.arr) {
             System.out.print(num + " ");
         }
         System.out.println();
