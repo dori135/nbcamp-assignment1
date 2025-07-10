@@ -5,7 +5,8 @@ public class App {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Calculator calculator = new Calculator();
+        ArithmeticCalculator arithcalc = new ArithmeticCalculator();
+        CircleCalculator circlecalc = new CircleCalculator();
         String ch = ""; // 초기화
 
         do { // 무조건 1번은 실행 되도록 do while 문 사용
@@ -23,7 +24,7 @@ public class App {
                 char c = sc.next().charAt(0);
 
                 try {
-                    int result = calculator.calculate(a, b, c);
+                    double result = arithcalc.calculate(a, b, c);
                     System.out.println("결과: " + result);
                 }
                 catch (Exception e) {
@@ -33,27 +34,27 @@ public class App {
 
                 System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
                 String rem = sc.next();
-                if (rem.equals("remove")) calculator.removeResult(); // 삭제 메서드
+                if (rem.equals("remove")) arithcalc.removeResult(); // 삭제 메서드
 
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                 String inq = sc.next();
-                if (inq.equals("inquiry")) calculator.inquiryResults(); // 조회 메서드
+                if (inq.equals("inquiry")) arithcalc.inquiryResults(); // 조회 메서드
             }
             else if (choice == 2) {
                 // 양의 정수 0포함 2개 전달 받기, 음의 정수, 실수 등 입력하지 않도록 print에 추가 설명
                 System.out.print("원의 반지름(0 이상의 정수)을 입력하세요:  ");
                 int r = sc.nextInt();
 
-                double result = calculator.calculateCircleArea(r);
+                double result = circlecalc.calculate(r);
                 System.out.println("결과: " + result);
 
                 System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
                 String rem = sc.next();
-                if (rem.equals("remove")) calculator.removeAreas(); // 삭제 메서드
+                if (rem.equals("remove")) circlecalc.removeResult(); // 삭제 메서드
 
                 System.out.println("저장된 원의 넓이를 조회하시겠습니까? (inquiry 입력 시 조회)");
                 String inq = sc.next();
-                if (inq.equals("inquiry")) calculator.inquiryAreas(); // 조회 메서드
+                if (inq.equals("inquiry")) circlecalc.inquiryResults(); // 조회 메서드
             }
             else{
                 System.out.println("올바르지 않은 선택입니다. 1, 2 중 골라주세요.");
