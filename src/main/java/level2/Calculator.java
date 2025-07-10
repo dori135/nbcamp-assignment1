@@ -20,7 +20,7 @@ public class Calculator {
         } else {
             throw new IllegalOperatorException("올바르지 않은 연산 기호가 들어 왔습니다. (+, -, *, /)");
         }
-        arr.add(result);
+        this.arr.add(result);
         return result;
     }
 
@@ -32,7 +32,7 @@ public class Calculator {
         System.out.println();
     }
     public void removeArr() {
-        arr.remove(0);
+        this.arr.remove(0);
     }
 }
 
