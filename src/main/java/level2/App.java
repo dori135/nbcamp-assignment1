@@ -1,4 +1,5 @@
 package level2;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -31,11 +32,25 @@ public class App {
 
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
             String rem = sc.next();
-            if (rem.equals("remove")) calculator.removeArr();
+            // if (rem.equals("remove")) calculator.removeArr();
+
+            if (rem.equals("remove")) {
+                // App 클래스의 main 메서드에서 setter 활용하라는 요구사항을 지키기 위해 이렇게 구현
+                // .다음 요구사항 적용할 때에는 다시 removeArr() 사용해 내부에서 처리할 예정
+                ArrayList<Integer> arr1 = calculator.getArr();
+                arr1.remove(0);
+                calculator.setArr(new ArrayList<>(arr1));
+            }
 
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             String inq = sc.next();
-            if (inq.equals("inquiry")) calculator.inquiry();
+            if (inq.equals("inquiry")){
+                System.out.print("저장된 연산결과 조회:  ");
+                for (Integer num : calculator.getArr()) {
+                    System.out.print(num + " ");
+                }
+                System.out.println();
+            }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             ch = sc.next();
