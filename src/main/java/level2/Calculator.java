@@ -24,13 +24,13 @@ public class Calculator {
         return result;
     }
 
-//    public void inquiry() {
-//        System.out.print("저장된 연산결과 조회:  ");
-//        for (Integer num : this.arr) {
-//            System.out.print(num + " ");
-//        }
-//        System.out.println();
-//    }
+    public void inquiryResults() {
+        System.out.print("저장된 연산결과 조회:  ");
+        for (Integer num : this.arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
 
     public void removeResult() {
         this.arr.remove(0); // 외부에서 접근하는 게 아닌, 내부에서 접근

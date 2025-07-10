@@ -35,13 +35,7 @@ public class App {
 
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             String inq = sc.next();
-            if (inq.equals("inquiry")){
-                System.out.print("저장된 연산결과 조회:  ");
-                for (Integer num : calculator.getArr()) {
-                    System.out.print(num + " ");
-                }
-                System.out.println();
-            }
+            if (inq.equals("inquiry")) calculator.inquiryResults(); // 조회 메서드
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             ch = sc.next();
