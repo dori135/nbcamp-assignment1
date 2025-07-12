@@ -5,8 +5,18 @@ public class App {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        ArithmeticCalculator arithcalc = new ArithmeticCalculator();
-        CircleCalculator circlecalc = new CircleCalculator();
+        ArithmeticCalculator arithcalc = new ArithmeticCalculator(
+                new AddOperator(),
+                new SubtractOperator(),
+                new MultiplyOperator(),
+                new DivideOperator()
+        );
+        CircleCalculator circlecalc = new CircleCalculator(
+                new AddOperator(),
+                new SubtractOperator(),
+                new MultiplyOperator(),
+                new DivideOperator()
+        );
         String ch = ""; // 초기화
 
         do { // 무조건 1번은 실행 되도록 do while 문 사용

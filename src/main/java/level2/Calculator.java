@@ -4,13 +4,25 @@ import java.util.ArrayList;
 public class Calculator {
     final static double PI = 3.14159; // 변하지 않는 값, 상수 => 따라서 final static 사용
 
+    // 불변성, final
+    protected final AddOperator add;
+    protected final SubtractOperator sub;
+    protected final MultiplyOperator mul;
+    protected final DivideOperator div;
+
+
+
     // 연산 결과 저장하는 컬렉션 타입 필드, 직접 접근 못하도록 막기(private)
     // 현재 구현은 사칙연산과 원의 넓이를 따로 저장 (static 안 썼기 때문에)
     protected ArrayList<Double> arr; // 접근제어자 변경: 상속한 클래스도 공유 받으려면 public 또는 protected인데 캡슐화를 위해 전체가 접근할 수는 없는 protected 선택
 
     // 생성자
-    public Calculator() {
+    public Calculator(AddOperator add, SubtractOperator sub, MultiplyOperator mul, DivideOperator div) {
         this.arr = new ArrayList<>();
+        this.add = add;
+        this.sub = sub;
+        this.mul = mul;
+        this.div = div;
     }
 
     public void inquiryResults() {
