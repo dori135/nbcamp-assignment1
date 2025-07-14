@@ -1,7 +1,7 @@
 package level2;
 
-public class SubtractOperator {
-    public int operate(int a, int b){
+public class SubtractOperator implements Operator {
+    public double operate(int a, int b){
         return a - b;
     }
 }

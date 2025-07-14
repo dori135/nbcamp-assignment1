@@ -1,22 +1,23 @@
 package level2;
+import java.util.HashMap;
 import java.util.Scanner;
+
 
 public class App {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        ArithmeticCalculator arithcalc = new ArithmeticCalculator(
-                new AddOperator(),
-                new SubtractOperator(),
-                new MultiplyOperator(),
-                new DivideOperator()
-        );
-        CircleCalculator circlecalc = new CircleCalculator(
-                new AddOperator(),
-                new SubtractOperator(),
-                new MultiplyOperator(),
-                new DivideOperator()
-        );
+
+        HashMap<Character, Operator> opMap = new HashMap<>();
+        opMap.put('+', new AddOperator());
+        opMap.put('-', new SubtractOperator());
+        opMap.put('*', new MultiplyOperator());
+        opMap.put('/', new DivideOperator());
+        opMap.put('%', new ModOperator());
+
+
+        ArithmeticCalculator arithcalc = new ArithmeticCalculator(opMap);
+        CircleCalculator circlecalc = new CircleCalculator(opMap);
         String ch = ""; // 초기화
 
         do { // 무조건 1번은 실행 되도록 do while 문 사용
@@ -51,12 +52,18 @@ public class App {
                 if (inq.equals("inquiry")) arithcalc.inquiryResults(); // 조회 메서드
             }
             else if (choice == 2) {
-                // 양의 정수 0포함 2개 전달 받기, 음의 정수, 실수 등 입력하지 않도록 print에 추가 설명
-                System.out.print("원의 반지름(0 이상의 정수)을 입력하세요:  ");
+                // 양의 정수(반지름) 1개 받기, print에 추가 설명
+                System.out.print("원의 반지름을 입력하세요:  ");
                 int r = sc.nextInt();
 
-                double result = circlecalc.calculate(r);
-                System.out.println("결과: " + result);
+                try {
+                    double result = circlecalc.calculate(r);
+                    System.out.println("결과: " + result);
+                }
+                catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    continue;
+                }
 
                 System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
                 String rem = sc.next();
