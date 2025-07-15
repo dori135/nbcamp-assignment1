@@ -9,6 +9,12 @@ public class CircleCalculator extends Calculator{
         super(opMap);
     }
 
+    /**
+     *  원의 넓이를 계산하는 메서드
+     * @param r 원의 반지름(int)
+     * @return 계산된 원의 넓이 (double)
+     * @throws RadiusZeroException 반지름 r이 0 또는 음수일 경우 발생
+     */
     public double calculate(int r) throws RadiusZeroException{
         if (r<=0)
             throw new RadiusZeroException("반지름은 0 또는 음수가 될 수 없습니다.");
